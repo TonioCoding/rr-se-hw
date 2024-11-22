@@ -18,7 +18,7 @@ export interface ContactInformation {
   postalCode: string;
 }
 
-export type AccountType = "Personal" | "Business" | "";
+export type AccountType = "Personal" | "Business" | string;
 
 export interface StateObj {
   accountType: AccountType;

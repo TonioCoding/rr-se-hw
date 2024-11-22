@@ -8,20 +8,25 @@ import Step3 from "../../components/steps/Step3";
 import Step4 from "../../components/steps/Step4";
 import Step5 from "../../components/steps/Step5";
 
-interface Data {
+export type Data = { accountType?: string } & { phoneNumber?: string } & {
+  otp?: string;
+} & { personalInfo?: PersonalInfo };
 
+export type OnNext = (data: Data) => void;
+
+export type OnBack = () => void;
+
+interface PersonalInfo {
+  name: string;
+  address: string;
+  dob: string;
 }
 
-interface OnNext {
-
-}
-
-interface OnBack {
-
-}
-
-interface FormData{
-    
+export interface FormDataObj {
+  accountType: string;
+  phoneNumber: string;
+  otp: string;
+  personalInfo: PersonalInfo;
 }
 
 const steps = [
@@ -48,7 +53,7 @@ export default function KYC() {
 
   const StepComponent = steps[currentStepIndex]?.component;
 
-  const handleNext = (data:Data) => {
+  const handleNext = (data: Data) => {
     setFormData({ ...formData, ...data });
     if (currentStepIndex < steps.length - 1) {
       router.push(`/steps/${steps[currentStepIndex + 1].id}`);

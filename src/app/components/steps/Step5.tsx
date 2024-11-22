@@ -1,4 +1,12 @@
-export default function Step5({ formData, onBack }) {
+import { FormDataObj, OnBack } from "@/app/steps/[step]/page";
+
+export default function Step5({
+  formData,
+  onBack,
+}: {
+  formData: FormDataObj;
+  onBack: OnBack;
+}) {
   return (
     <div>
       <h2>Summary</h2>

@@ -1,36 +1,22 @@
-import { FormDataObj, OnBack, OnNext } from "@/app/steps/[step]/page";
+import { OnBack, OnNext } from "@/app/steps/[step]/page";
+import { Button } from "@/app/ui/Button";
 
-export default function Step2({
-  formData,
+export default function Step4({
   onNext,
   onBack,
 }: {
-  formData: FormDataObj;
   onNext: OnNext;
   onBack: OnBack;
 }) {
-  const handleSubmit = (e) => {
-    if (e.target !== null) {
-      e.preventDefault();
-      const phoneNumber = e.target.phoneNumber.value;
-      onNext({ phoneNumber });
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Phone Number:
-        <input
-          type="tel"
-          name="phoneNumber"
-          defaultValue={formData.phoneNumber || ""}
-        />
-      </label>
-      <button type="button" onClick={onBack}>
+    <div>
+      hey
+      <Button onClick={onBack} className="w-[100px] bg-blue-500">
         Back
-      </button>
-      <button type="submit">Next</button>
-    </form>
+      </Button>
+      <Button onClick={onNext} className="w-[100px] bg-blue-500">
+        Next
+      </Button>
+    </div>
   );
 }

@@ -1,30 +1,32 @@
 "use client";
 
-import { FormDataObj, OnNext } from "@/app/steps/[step]/page";
+import { OnNext } from "@/app/steps/[step]/page";
 import { RxAvatar } from "react-icons/rx";
 import { IoBusiness } from "react-icons/io5";
 import AccountTypeCard from "../AccountTypeCard";
 import { Button } from "@/app/ui/Button";
 import { useState } from "react";
+import useFormStore from "@/app/zustand";
 
-export default function Step1({
-  formData,
-  onNext,
-}: {
-  formData: FormDataObj;
-  onNext: OnNext;
-}) {
-  const [accountType, setAccountType] = useState(formData.accountType || "");
+export default function Step1({ onNext }: { onNext: OnNext }) {
+  const [accountType, setAccountType] = useState("");
   const handleAccountType = (type: string): void => {
     setAccountType(type);
   };
+  const updateAccountTypeState = useFormStore((state) => state.setAccountType);
 
   const handleSubmit = () => {
-    if (accountType !== "") onNext({ accountType });
+    if (accountType !== "") {
+      updateAccountTypeState(accountType);
+      onNext();
+    }
   };
+
+  const state1 = useFormStore((state) => state.accountType);
 
   return (
     <div className="">
+      {state1}
       <div className="flex flex-col md:flex-row items-center justify-center gap-[1rem]">
         <AccountTypeCard
           title="Personal"

@@ -6,6 +6,7 @@ export interface PersonalInformation {
   lastName: string;
   middleName: string;
   dateOfBirth: string;
+  avatar?: File;
 }
 
 export interface ContactInformation {

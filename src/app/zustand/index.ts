@@ -24,7 +24,6 @@ export interface StateObj {
   accountType: AccountType;
   personalInformation: PersonalInformation;
   contactInformation: ContactInformation;
-  getAccountType: () => string;
   getState?: () => void;
   setAccountType: (type: AccountType) => void;
   setPersonalInformation?: (info: PersonalInformation) => void;
@@ -49,10 +48,6 @@ const useFormStore = create<StateObj>()(
         city: "",
         state: "",
         postalCode: "",
-      },
-      getAccountType: () => {
-        const currentState = get().accountType;
-        return currentState;
       },
       getState: () => {
         return get();

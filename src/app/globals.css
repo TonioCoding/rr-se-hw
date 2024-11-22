@@ -6,6 +6,10 @@ section {
   min-height: 100dvh;
 }
 
+main {
+  padding: 0 clamp(1rem, 3rem + 5dvw, 5rem) 1rem;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

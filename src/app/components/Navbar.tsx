@@ -1,14 +1,7 @@
 export default function Navbar() {
   return (
-    <nav className="flex justify-around">
+    <nav className="flex justify-start pl-[1rem] py-[0.5rem] text-white bg-zinc-400">
       <h1>KYC Form</h1>
-      <ul className="flex items-center gap-[1rem]">
-        <li>How will you use</li>
-        <li>Phone Number</li>
-        <li>Verify Number</li>
-        <li>Personal Information</li>
-        <li>Summary</li>
-      </ul>
     </nav>
   );
 }

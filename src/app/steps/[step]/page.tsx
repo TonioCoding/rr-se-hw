@@ -7,6 +7,7 @@ import Step2 from "../../components/steps/Step2";
 import Step3 from "../../components/steps/Step3";
 import Step4 from "../../components/steps/Step4";
 import Step5 from "../../components/steps/Step5";
+import { StepsList } from "@/app/components/StepsList";
 
 export type Data = { accountType?: string } & { phoneNumber?: string } & {
   otp?: string;
@@ -66,9 +67,32 @@ export default function KYC() {
     }
   };
 
+  const pathnameToString = (pathname: string): string => {
+    switch (pathname) {
+      case "account-type":
+        return "Account Type";
+      case "phone-number":
+        return "Phone Number";
+      case "verify-number":
+        return "Verify Number";
+      case "personal-info":
+        return "Personal Information";
+      case "summary":
+        return "Summary";
+      default:
+        return "";
+    }
+  };
+  console.log(step);
   return (
-    <div>
-      <h1>KYC Form - Step {currentStepIndex + 1}</h1>
+    <section>
+      <div className="text-center place-items-center my-[1rem] mb-[3rem]">
+        <h1 className="py-[1rem]">
+          KYC Form &#8208; Step {currentStepIndex + 1}{" "}
+          <span className="text-blue-500">{pathnameToString(step)}</span>
+        </h1>
+        <StepsList currentStep={step} />
+      </div>
       {StepComponent && (
         <StepComponent
           formData={formData}
@@ -76,6 +100,6 @@ export default function KYC() {
           onBack={handleBack}
         />
       )}
-    </div>
+    </section>
   );
 }

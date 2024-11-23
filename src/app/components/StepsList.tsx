@@ -2,7 +2,6 @@ import { Slash } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "../ui/Breadcrumb";
@@ -24,9 +23,7 @@ export function StepsList(props: Props) {
               : ""
           }
         >
-          <BreadcrumbLink href="/steps/account-type">
-            Account Type
-          </BreadcrumbLink>
+          Account Type
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Slash />
@@ -38,9 +35,7 @@ export function StepsList(props: Props) {
               : ""
           }
         >
-          <BreadcrumbLink href="/steps/personal-info">
-            Personal Information
-          </BreadcrumbLink>
+          Personal Information
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Slash />
@@ -52,9 +47,7 @@ export function StepsList(props: Props) {
               : ""
           }
         >
-          <BreadcrumbLink href="/steps/contact-info">
-            Contact Information
-          </BreadcrumbLink>
+          Contact Information
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Slash />
@@ -66,7 +59,7 @@ export function StepsList(props: Props) {
               : ""
           }
         >
-          <BreadcrumbLink href="/steps/summary">Summary</BreadcrumbLink>
+          Summary
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

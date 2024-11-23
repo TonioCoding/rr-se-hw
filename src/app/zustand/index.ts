@@ -25,7 +25,11 @@ export interface StateObj {
   accountType: AccountType;
   personalInformation: PersonalInformation;
   contactInformation: ContactInformation;
-  getState: () => void;
+  getState: () => {
+    accountType: AccountType;
+    personalInformation: PersonalInformation;
+    contactInformation: ContactInformation;
+  };
   setAccountType: (type: AccountType) => void;
   setPersonalInformation: (info: PersonalInformation) => void;
   setContactInformation: (info: ContactInformation) => void;

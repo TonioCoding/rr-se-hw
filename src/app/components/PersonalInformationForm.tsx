@@ -27,10 +27,9 @@ interface Props {
 
 export default function PersonalInformationForm(props: Props) {
   const { register, handleSubmit, errors } = usePersonalInformationForm();
-
   const form = usePersonalInformationForm();
-
   const setFormData = useFormStore((state) => state.setPersonalInformation);
+  const getState = useFormStore((state) => state.getState);
 
   type FormSchemaType = z.infer<typeof personalInformationFormSchema>;
 
@@ -60,7 +59,10 @@ export default function PersonalInformationForm(props: Props) {
             <FormItem>
               <FormLabel>First Name</FormLabel>
               <FormControl>
-                <Input {...register("firstName")} />
+                <Input
+                  {...register("firstName")}
+                  placeholder={getState().personalInformation.firstName}
+                />
               </FormControl>
             </FormItem>
           )}
@@ -72,7 +74,10 @@ export default function PersonalInformationForm(props: Props) {
             <FormItem>
               <FormLabel>Last Name</FormLabel>
               <FormControl>
-                <Input {...register("lastName")} />
+                <Input
+                  {...register("lastName")}
+                  placeholder={getState().personalInformation.lastName}
+                />
               </FormControl>
             </FormItem>
           )}
@@ -84,7 +89,10 @@ export default function PersonalInformationForm(props: Props) {
             <FormItem>
               <FormLabel>Middle Name</FormLabel>
               <FormControl>
-                <Input {...register("middleName")} />
+                <Input
+                  {...register("middleName")}
+                  placeholder={getState().personalInformation.middleName}
+                />
               </FormControl>
             </FormItem>
           )}
@@ -96,7 +104,10 @@ export default function PersonalInformationForm(props: Props) {
             <FormItem>
               <FormLabel>Date of Birth</FormLabel>
               <FormControl>
-                <Input {...register("dateOfBirth")} />
+                <Input
+                  {...register("dateOfBirth")}
+                  placeholder={getState().personalInformation.dateOfBirth}
+                />
               </FormControl>
             </FormItem>
           )}

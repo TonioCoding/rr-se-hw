@@ -5,17 +5,17 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 export const personalInformationFormSchema = z.object({
-  firstName: z.string().min(8, {
-    message: "First name must be at least 8 characters",
+  firstName: z.string().min(2, {
+    message: "First name must be at least 2 characters",
   }),
-  lastName: z.string().min(8, {
-    message: "Last name must be at least 8 characters",
+  lastName: z.string().min(2, {
+    message: "Last name must be at least 2 characters",
   }),
-  middleName: z.string().min(8, {
-    message: " name must be at least 8 characters",
+  middleName: z.string().min(2, {
+    message: " name must be at least 2 characters",
   }),
-  dateOfBirth: z.string().min(8, {
-    message: "DOB must be at least 8 characters",
+  dateOfBirth: z.string().min(10, {
+    message: "DOB must be at least 10 characters",
   }),
   /*  avatar: z
     .instanceof(File)

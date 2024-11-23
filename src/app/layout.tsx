@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Roboto } from "next/font/google";
 import Footer from "./components/Footer";
+import ToastContainerWrapper from "./components/ToastContainerWrapper";
 
 const roboto = Roboto({
   weight: "400",
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <ToastContainerWrapper />
       </body>
     </html>
   );

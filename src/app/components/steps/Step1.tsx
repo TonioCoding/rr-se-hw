@@ -5,7 +5,7 @@ import { RxAvatar } from "react-icons/rx";
 import { IoBusiness } from "react-icons/io5";
 import AccountTypeCard from "../AccountTypeCard";
 import { Button } from "@/app/ui/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFormStore from "@/app/zustand";
 
 export default function Step1({ onNext }: { onNext: OnNext }) {
@@ -14,6 +14,7 @@ export default function Step1({ onNext }: { onNext: OnNext }) {
     setAccountType(type);
   };
   const updateAccountTypeState = useFormStore((state) => state.setAccountType);
+  const getState = useFormStore((state) => state.getState());
 
   const handleSubmit = () => {
     if (accountType !== "") {
@@ -24,6 +25,9 @@ export default function Step1({ onNext }: { onNext: OnNext }) {
 
   const state1 = useFormStore((state) => state.accountType);
 
+  useEffect(() => {
+    setAccountType(getState.accountType);
+  }, [getState]);
   return (
     <div className="">
       {state1}

@@ -11,14 +11,42 @@ import {
   FormLabel,
 } from "../ui/Form";
 import { Input } from "../ui/Input";
-import { usePersonalInformationForm } from "../hooks/customFormHook";
+import {
+  personalInformationFormSchema,
+  usePersonalInformationForm,
+} from "../hooks/customFormHook";
+import useFormStore from "../zustand";
+import { SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
-export default function PersonalInformationForm() {
-  const { register, handleSubmit, errors, onSubmit } =
-    usePersonalInformationForm();
+interface Props {
+  onNext: () => void;
+}
+
+export default function PersonalInformationForm(props: Props) {
+  const { register, handleSubmit, errors } = usePersonalInformationForm();
 
   const form = usePersonalInformationForm();
-  console.log(errors);
+
+  const setFormData = useFormStore((state) => state.setPersonalInformation);
+
+  type FormSchemaType = z.infer<typeof personalInformationFormSchema>;
+
+  const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
+    setFormData(data);
+    toast.success("Form submitted");
+    props.onNext();
+  };
+
+  useEffect(() => {
+    if (errors.firstName) toast.error(errors.firstName.message);
+    if (errors.lastName) toast.error(errors.lastName.message);
+    if (errors.middleName) toast.error(errors.middleName.message);
+    if (errors.dateOfBirth) toast.error(errors.dateOfBirth.message);
+  }, [errors]);
+
   return (
     <Form {...form}>
       <form
@@ -27,6 +55,7 @@ export default function PersonalInformationForm() {
       >
         <FormField
           name="firstName"
+          control={form.control}
           render={() => (
             <FormItem>
               <FormLabel>First Name</FormLabel>
@@ -38,6 +67,7 @@ export default function PersonalInformationForm() {
         />
         <FormField
           name="lastName"
+          control={form.control}
           render={() => (
             <FormItem>
               <FormLabel>Last Name</FormLabel>
@@ -49,6 +79,7 @@ export default function PersonalInformationForm() {
         />
         <FormField
           name="middleName"
+          control={form.control}
           render={() => (
             <FormItem>
               <FormLabel>Middle Name</FormLabel>
@@ -60,6 +91,7 @@ export default function PersonalInformationForm() {
         />
         <FormField
           name="dateOfBirth"
+          control={form.control}
           render={() => (
             <FormItem>
               <FormLabel>Date of Birth</FormLabel>

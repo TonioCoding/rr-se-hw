@@ -10,11 +10,17 @@ import useFormStore from "@/app/zustand";
 
 export default function Step1({ onNext }: { onNext: OnNext }) {
   const [accountType, setAccountType] = useState("");
-  const handleAccountType = (type: string): void => {
-    setAccountType(type);
-  };
+
   const updateAccountTypeState = useFormStore((state) => state.setAccountType);
   const getState = useFormStore((state) => state.getState());
+
+  const handleAccountType = (type: string): void => {
+    if (type === accountType) {
+      setAccountType("");
+    } else {
+      setAccountType(type);
+    }
+  };
 
   const handleSubmit = () => {
     if (accountType !== "") {
@@ -23,14 +29,12 @@ export default function Step1({ onNext }: { onNext: OnNext }) {
     }
   };
 
-  const state1 = useFormStore((state) => state.accountType);
-
   useEffect(() => {
     setAccountType(getState.accountType);
   }, [getState]);
+
   return (
     <div className="">
-      {state1}
       <div className="flex flex-col md:flex-row items-center justify-center gap-[1rem]">
         <AccountTypeCard
           title="Personal"

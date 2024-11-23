@@ -4,11 +4,17 @@ import { OnBack, OnNext } from "@/app/steps/[step]/page";
 import { Button } from "@/app/ui/Button";
 import PersonalInformationForm from "../PersonalInformationForm";
 
-export default function Step4({ onBack }: { onNext: OnNext; onBack: OnBack }) {
+export default function Step2({
+  onBack,
+  onNext,
+}: {
+  onNext: OnNext;
+  onBack: OnBack;
+}) {
   return (
     <div>
       <h1></h1>
-      <PersonalInformationForm />
+      <PersonalInformationForm onNext={onNext} />
       <Button onClick={onBack} className="w-[100px] bg-blue-500">
         Back
       </Button>

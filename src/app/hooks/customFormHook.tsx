@@ -6,16 +6,16 @@ import { z } from "zod";
 
 export const personalInformationFormSchema = z.object({
   firstName: z.string().min(8, {
-    message: "",
+    message: "First name must be at least 8 characters",
   }),
   lastName: z.string().min(8, {
-    message: "",
+    message: "Last name must be at least 8 characters",
   }),
   middleName: z.string().min(8, {
-    message: "",
+    message: " name must be at least 8 characters",
   }),
   dateOfBirth: z.string().min(8, {
-    message: "",
+    message: "DOB must be at least 8 characters",
   }),
   /*  avatar: z
     .instanceof(File)
@@ -78,8 +78,10 @@ export function usePersonalInformationForm() {
 
   type FormSchemaType = z.infer<typeof personalInformationFormSchema>;
 
+  // onSubmit is opt: form goal is to update zustand state, which can't be done outside a react component
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
     console.log(data);
+    console.log("form data has been submitted");
   };
 
   return {

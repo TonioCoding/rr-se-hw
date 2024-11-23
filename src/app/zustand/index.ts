@@ -25,10 +25,10 @@ export interface StateObj {
   accountType: AccountType;
   personalInformation: PersonalInformation;
   contactInformation: ContactInformation;
-  getState?: () => void;
+  getState: () => void;
   setAccountType: (type: AccountType) => void;
-  setPersonalInformation?: (info: PersonalInformation) => void;
-  setContactInformation?: (info: ContactInformation) => void;
+  setPersonalInformation: (info: PersonalInformation) => void;
+  setContactInformation: (info: ContactInformation) => void;
 }
 
 const useFormStore = create<StateObj>()(

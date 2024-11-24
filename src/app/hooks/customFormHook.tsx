@@ -63,7 +63,6 @@ export function usePersonalInformationForm() {
   });
 
   const {
-    control,
     register,
     handleSubmit,
     formState: { errors },

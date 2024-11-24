@@ -12,7 +12,7 @@ export const personalInformationFormSchema = z.object({
     message: "Last name must be at least 2 characters",
   }),
   middleName: z.string().min(2, {
-    message: " name must be at least 2 characters",
+    message: "Middle name must be at least 2 characters",
   }),
   dateOfBirth: z.string().min(10, {
     message: "DOB must be at least 10 characters",
@@ -63,6 +63,7 @@ export function usePersonalInformationForm() {
   });
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },

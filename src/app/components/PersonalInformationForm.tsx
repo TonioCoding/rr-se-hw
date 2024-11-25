@@ -61,46 +61,36 @@ export default function PersonalInformationForm(props: Props) {
       >
         <FormField
           name="firstName"
-          control={form.control}
+          control={control}
           render={() => (
             <FormItem>
               <FormLabel>First Name</FormLabel>
               <FormControl>
-                <Input
-                  {...register("firstName")}
-                  //placeholder={getState().personalInformation.firstName}
-                  defaultValue={"namename"}
-                />
+                <Input {...register("firstName")} defaultValue={"namename"} />
               </FormControl>
             </FormItem>
           )}
         />
         <FormField
           name="lastName"
-          control={form.control}
+          control={control}
           render={() => (
             <FormItem>
               <FormLabel>Last Name</FormLabel>
               <FormControl>
-                <Input
-                  {...register("lastName")}
-                  //placeholder={getState().personalInformation.lastName}
-                />
+                <Input {...register("lastName")} />
               </FormControl>
             </FormItem>
           )}
         />
         <FormField
           name="middleName"
-          control={form.control}
+          control={control}
           render={() => (
             <FormItem>
               <FormLabel>Middle Name</FormLabel>
               <FormControl>
-                <Input
-                  {...register("middleName")}
-                  //placeholder={getState().personalInformation.middleName}
-                />
+                <Input {...register("middleName")} />
               </FormControl>
             </FormItem>
           )}
@@ -119,7 +109,6 @@ export default function PersonalInformationForm(props: Props) {
                     selected={value}
                     onChange={(date) => {
                       onChange(moment(date).format("l"));
-                      //setCurrentDate(date);
                     }}
                     showYearDropdown
                     dateFormat="yyyy-MM-dd"

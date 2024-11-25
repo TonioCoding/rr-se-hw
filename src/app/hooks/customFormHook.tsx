@@ -14,9 +14,13 @@ export const personalInformationFormSchema = z.object({
   middleName: z.string().min(2, {
     message: "Middle name must be at least 2 characters",
   }),
-  dateOfBirth: z.string().min(10, {
-    message: "DOB must be at least 10 characters",
-  }),
+  dateOfBirth: z.coerce
+    .string()
+    .min(1, { message: "Please Select DOB" })
+    /* .refine((date) => {
+      //here use regex to make sure date is of desired format
+      //i.e. yyyy-mm-dd
+    }) */,
   /*  avatar: z
     .instanceof(File)
     .refine((file) => file.size <= 5 * 1024 * 1024, {
@@ -63,6 +67,7 @@ export function usePersonalInformationForm() {
   });
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -86,6 +91,7 @@ export function usePersonalInformationForm() {
 
   return {
     ...form,
+    control,
     register,
     handleSubmit,
     errors,

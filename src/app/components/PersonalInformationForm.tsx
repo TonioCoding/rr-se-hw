@@ -9,6 +9,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "../ui/Form";
 import { Input } from "../ui/Input";
 import {
@@ -16,17 +17,21 @@ import {
   usePersonalInformationForm,
 } from "../hooks/customFormHook";
 import useFormStore from "../zustand";
-import { SubmitHandler } from "react-hook-form";
+import { Controller, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 
 interface Props {
   onNext: () => void;
 }
 
 export default function PersonalInformationForm(props: Props) {
-  const { register, handleSubmit, errors } = usePersonalInformationForm();
+  const { control, register, handleSubmit, errors } =
+    usePersonalInformationForm();
   const form = usePersonalInformationForm();
   const setFormData = useFormStore((state) => state.setPersonalInformation);
   const getState = useFormStore((state) => state.getState);
@@ -34,8 +39,8 @@ export default function PersonalInformationForm(props: Props) {
   type FormSchemaType = z.infer<typeof personalInformationFormSchema>;
 
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
+    toast.success("Personal Information Updated");
     setFormData(data);
-    toast.success("Form submitted");
     props.onNext();
   };
 
@@ -45,6 +50,8 @@ export default function PersonalInformationForm(props: Props) {
     if (errors.middleName) toast.error(errors.middleName.message);
     if (errors.dateOfBirth) toast.error(errors.dateOfBirth.message);
   }, [errors]);
+
+  console.log(getState().personalInformation);
 
   return (
     <Form {...form}>
@@ -61,7 +68,8 @@ export default function PersonalInformationForm(props: Props) {
               <FormControl>
                 <Input
                   {...register("firstName")}
-                  placeholder={getState().personalInformation.firstName}
+                  //placeholder={getState().personalInformation.firstName}
+                  defaultValue={"namename"}
                 />
               </FormControl>
             </FormItem>
@@ -76,7 +84,7 @@ export default function PersonalInformationForm(props: Props) {
               <FormControl>
                 <Input
                   {...register("lastName")}
-                  placeholder={getState().personalInformation.lastName}
+                  //placeholder={getState().personalInformation.lastName}
                 />
               </FormControl>
             </FormItem>
@@ -91,7 +99,7 @@ export default function PersonalInformationForm(props: Props) {
               <FormControl>
                 <Input
                   {...register("middleName")}
-                  placeholder={getState().personalInformation.middleName}
+                  //placeholder={getState().personalInformation.middleName}
                 />
               </FormControl>
             </FormItem>
@@ -99,16 +107,28 @@ export default function PersonalInformationForm(props: Props) {
         />
         <FormField
           name="dateOfBirth"
-          control={form.control}
-          render={() => (
-            <FormItem>
-              <FormLabel>Date of Birth</FormLabel>
-              <FormControl>
-                <Input
-                  {...register("dateOfBirth")}
-                  placeholder={getState().personalInformation.dateOfBirth}
-                />
-              </FormControl>
+          control={control}
+          render={({ field: { value, onChange } }) => (
+            <FormItem className="flex gap-5 items-center">
+              <FormLabel>Date of birth</FormLabel>
+              <Controller
+                control={control}
+                name="dateOfBirth"
+                render={() => (
+                  <ReactDatePicker
+                    selected={value}
+                    onChange={(date) => {
+                      onChange(moment(date).format("l"));
+                      //setCurrentDate(date);
+                    }}
+                    showYearDropdown
+                    dateFormat="yyyy-MM-dd"
+                    placeholderText="Select date"
+                    className="input"
+                  />
+                )}
+              />
+              <FormMessage />
             </FormItem>
           )}
         />

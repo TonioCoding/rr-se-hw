@@ -51,8 +51,6 @@ export default function PersonalInformationForm(props: Props) {
     if (errors.dateOfBirth) toast.error(errors.dateOfBirth.message);
   }, [errors]);
 
-  console.log(getState().personalInformation);
-
   return (
     <Form {...form}>
       <form

@@ -64,7 +64,7 @@ export default function PersonalInformationForm(props: Props) {
             <FormItem>
               <FormLabel>First Name</FormLabel>
               <FormControl>
-                <Input {...register("firstName")} defaultValue={"namename"} />
+                <Input {...register("firstName")} />
               </FormControl>
             </FormItem>
           )}

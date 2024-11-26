@@ -30,10 +30,35 @@ export interface StateObj {
     personalInformation: PersonalInformation;
     contactInformation: ContactInformation;
   };
+  resetState: () => void;
   setAccountType: (type: AccountType) => void;
   setPersonalInformation: (info: PersonalInformation) => void;
   setContactInformation: (info: ContactInformation) => void;
 }
+interface InitialState {
+  accountType: AccountType;
+  personalInformation: PersonalInformation;
+  contactInformation: ContactInformation;
+}
+
+const initialState: InitialState = {
+  accountType: "",
+  personalInformation: {
+    firstName: "",
+    lastName: "",
+    middleName: "",
+    dateOfBirth: "",
+  },
+  contactInformation: {
+    emailAddress: "",
+    phoneNumber: "",
+    streetAddress: "",
+    typeOfBuilding: "",
+    city: "",
+    state: "",
+    postalCode: "",
+  },
+};
 
 const useFormStore = create<StateObj>()(
   persist(
@@ -56,6 +81,9 @@ const useFormStore = create<StateObj>()(
       },
       getState: () => {
         return get();
+      },
+      resetState: () => {
+        set(initialState);
       },
       setAccountType: (type) => {
         set((state: StateObj) => ({ ...state, accountType: type }));

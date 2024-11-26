@@ -19,7 +19,9 @@ export default function Step4({
 
   return (
     <div>
-      <h1 className="text-xl mb-[2rem]">Summary</h1>
+      <h1 className="font-semibold text-xl mb-[2rem] text-center md:text-start">
+        Summary
+      </h1>
       <div className="grid md:grid-cols-3 gap-[1rem]">
         <AccountTypeSummary />
         <PersonalInformationSummary />

@@ -7,6 +7,7 @@ import AccountTypeCard from "../AccountTypeCard";
 import { Button } from "@/app/ui/Button";
 import { useEffect, useState } from "react";
 import useFormStore from "@/app/zustand";
+import { toast } from "react-toastify";
 
 export default function Step1({ onNext }: { onNext: OnNext }) {
   const [accountType, setAccountType] = useState("");
@@ -26,6 +27,8 @@ export default function Step1({ onNext }: { onNext: OnNext }) {
     if (accountType !== "") {
       updateAccountTypeState(accountType);
       onNext();
+    } else {
+      toast.error("Please choose account type");
     }
   };
 

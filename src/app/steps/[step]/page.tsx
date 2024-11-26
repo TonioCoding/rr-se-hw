@@ -6,6 +6,9 @@ import Step2 from "../../components/steps/Step2";
 import Step3 from "../../components/steps/Step3";
 import Step4 from "../../components/steps/Step4";
 import { StepsList } from "@/app/components/StepsList";
+import { Button } from "@/app/ui/Button";
+import { toast } from "react-toastify";
+import useFormStore from "@/app/zustand";
 
 export type OnNext = () => void;
 
@@ -19,6 +22,7 @@ const steps = [
 ];
 
 export default function KYC() {
+  const resetState = useFormStore((state) => state.resetState);
   const router = useRouter();
   const params = useParams<{ step: string }>();
   const { step } = params;
@@ -52,6 +56,12 @@ export default function KYC() {
     }
   };
 
+  const cancelForm = () => {
+    resetState();
+    toast.warning("Form canceled");
+    router.push("/");
+  };
+
   return (
     <section>
       <div className="text-center place-items-center my-[1rem] mb-[3rem]">
@@ -63,6 +73,9 @@ export default function KYC() {
       {StepComponent && (
         <StepComponent onNext={handleNext} onBack={handleBack} />
       )}
+      <Button className="bg-red-500 w-[100px] mt-[1rem]" onClick={cancelForm}>
+        Cancel
+      </Button>
     </section>
   );
 }

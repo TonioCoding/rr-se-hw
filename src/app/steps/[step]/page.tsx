@@ -55,8 +55,7 @@ export default function KYC() {
   return (
     <section>
       <div className="text-center place-items-center my-[1rem] mb-[3rem]">
-        <h1 className="py-[1rem]">
-          KYC Form &#8208; Step {currentStepIndex + 1}{" "}
+        <h1 className="py-[1rem] text-xl">
           <span className="text-blue-500">{pathnameToString(step)}</span>
         </h1>
         <StepsList currentStep={step} />

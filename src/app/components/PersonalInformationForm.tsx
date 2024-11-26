@@ -54,7 +54,7 @@ export default function PersonalInformationForm(props: Props) {
     <Form {...form}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 gap-[1.5rem] w-fit place-self-center"
+        className="grid grid-cols-1 gap-[1.5rem] w-full md:w-[400px] place-self-center"
       >
         <FormField
           name="firstName"

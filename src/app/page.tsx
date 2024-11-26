@@ -12,7 +12,7 @@ export default function Home() {
           RR SE HW &#8208; KYC App
         </h1>
         <p className="text-gray-500">
-          Lightweight application to simulate Know Your Customer form process
+          Lightweight application to simulate a Know Your Customer form process
         </p>
         <Button
           onClick={() => {

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 section {
-  min-height: 100dvh;
+  min-height: min(min-content, 100dvh);
 }
 
 main {

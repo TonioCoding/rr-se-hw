@@ -1,21 +1,24 @@
-import { OnNext, OnBack } from "@/app/steps/[step]/page";
+"use client";
+
+import { OnBack } from "@/app/steps/[step]/page";
 import { Button } from "@/app/ui/Button";
 import useFormStore from "@/app/zustand";
 import PersonalInformationSummary from "../PersonalInformationSummary";
 import ContactInformationSummary from "../ContactInformationSummary";
 import AccountTypeSummary from "../AccountTypeSummary";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
-export default function Step4({
-  onNext,
-  onBack,
-}: {
-  onNext: OnNext;
-  onBack: OnBack;
-}) {
-  const getFormData = useFormStore((state) => state.getState);
-  console.log(getFormData().accountType);
-  console.log(getFormData().personalInformation);
-  console.log(getFormData().contactInformation);
+export default function Step4({ onBack }: { onBack: OnBack }) {
+  const resetState = useFormStore((state) => state.resetState);
+
+  const router = useRouter();
+
+  const submitForm = () => {
+    resetState();
+    toast.success("Form submitted!");
+    router.push("/");
+  };
 
   return (
     <div>
@@ -31,7 +34,7 @@ export default function Step4({
         <Button onClick={onBack} className="w-[100px] bg-blue-500">
           Back
         </Button>
-        <Button onClick={onNext} className="w-[100px] bg-green-500">
+        <Button onClick={submitForm} className="w-[100px] bg-green-500">
           Complete
         </Button>
       </div>

@@ -232,7 +232,10 @@ export default function ContactInformationForm(props: Props) {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-[100px] bg-green-500">
+        <Button
+          type="submit"
+          className="place-self-center md:place-self-start w-[100px] bg-green-500"
+        >
           Submit
         </Button>
       </form>

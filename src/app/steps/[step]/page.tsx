@@ -60,7 +60,6 @@ export default function KYC() {
         </h1>
         <StepsList currentStep={step} />
       </div>
-
       {StepComponent && (
         <StepComponent onNext={handleNext} onBack={handleBack} />
       )}

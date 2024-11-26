@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
+import useFormStore from "../zustand";
 
 export const personalInformationFormSchema = z.object({
   firstName: z.string().min(2, {
@@ -39,8 +40,8 @@ export const contactInformationFormSchema = z.object({
   streetAddress: z.string().min(2, {
     message: "Street address must be at least 2 characters.",
   }),
-  typeOfBuilding: z.string().min(2, {
-    message: "Building type must be at least 2 characters.",
+  typeOfBuilding: z.string().min(1, {
+    message: "Building type is mandatory.",
   }),
   city: z.string().min(2, {
     message: "City must be at least 2 characters.",
@@ -54,6 +55,8 @@ export const contactInformationFormSchema = z.object({
 });
 
 export function usePersonalInformationForm() {
+  const getState = useFormStore((state) => state.getState);
+
   const form = useForm<z.infer<typeof personalInformationFormSchema>>({
     resolver: zodResolver(personalInformationFormSchema),
     defaultValues: {
@@ -72,10 +75,10 @@ export function usePersonalInformationForm() {
   } = useForm<z.infer<typeof personalInformationFormSchema>>({
     resolver: zodResolver(personalInformationFormSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      middleName: "",
-      dateOfBirth: "",
+      firstName: getState().personalInformation.firstName || "",
+      lastName: getState().personalInformation.lastName || "",
+      middleName: getState().personalInformation.middleName || "",
+      dateOfBirth: getState().personalInformation.dateOfBirth || "",
     },
   });
 
@@ -98,6 +101,8 @@ export function usePersonalInformationForm() {
 }
 
 export function useContactInformationForm() {
+  const getState = useFormStore((state) => state.getState);
+
   const form = useForm<z.infer<typeof contactInformationFormSchema>>({
     resolver: zodResolver(contactInformationFormSchema),
     defaultValues: {
@@ -118,13 +123,13 @@ export function useContactInformationForm() {
   } = useForm<z.infer<typeof contactInformationFormSchema>>({
     resolver: zodResolver(contactInformationFormSchema),
     defaultValues: {
-      emailAddress: "",
-      phoneNumber: "",
-      streetAddress: "",
-      typeOfBuilding: "",
-      city: "",
-      state: "",
-      postalCode: "",
+      emailAddress: getState().contactInformation.emailAddress || "",
+      phoneNumber: getState().contactInformation.phoneNumber || "",
+      streetAddress: getState().contactInformation.streetAddress || "",
+      typeOfBuilding: getState().contactInformation.typeOfBuilding || "",
+      city: getState().contactInformation.city || "",
+      state: getState().contactInformation.state || "",
+      postalCode: getState().contactInformation.postalCode || "",
     },
   });
 

@@ -69,18 +69,6 @@ export default function PersonalInformationForm(props: Props) {
           )}
         />
         <FormField
-          name="lastName"
-          control={control}
-          render={() => (
-            <FormItem>
-              <FormLabel>Last Name</FormLabel>
-              <FormControl>
-                <Input {...register("lastName")} />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <FormField
           name="middleName"
           control={control}
           render={() => (
@@ -92,6 +80,19 @@ export default function PersonalInformationForm(props: Props) {
             </FormItem>
           )}
         />
+        <FormField
+          name="lastName"
+          control={control}
+          render={() => (
+            <FormItem>
+              <FormLabel>Last Name</FormLabel>
+              <FormControl>
+                <Input {...register("lastName")} />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
         <FormField
           name="dateOfBirth"
           control={control}

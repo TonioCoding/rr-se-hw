@@ -94,8 +94,7 @@ export default function ContactInformationForm(props: Props) {
     useContactInformationForm();
   const form = useContactInformationForm();
   const setFormData = useFormStore((state) => state.setContactInformation);
-  const data = useFormStore((state) => state.getState);
-  console.log(data());
+
   type FormSchemaType = z.infer<typeof contactInformationFormSchema>;
 
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => {

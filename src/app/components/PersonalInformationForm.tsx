@@ -104,7 +104,7 @@ export default function PersonalInformationForm(props: Props) {
                 name="dateOfBirth"
                 render={() => (
                   <ReactDatePicker
-                    selected={new Date(value)}
+                    //selected={new Date(value)}
                     onChange={(date) => {
                       onChange(moment(date).format("l"));
                     }}

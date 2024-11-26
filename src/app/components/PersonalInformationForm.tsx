@@ -96,7 +96,7 @@ export default function PersonalInformationForm(props: Props) {
         <FormField
           name="dateOfBirth"
           control={control}
-          render={({ field: { value, onChange } }) => (
+          render={({ field: { /* value, */ onChange } }) => (
             <FormItem className="flex gap-5 items-center">
               <FormLabel>Date of birth</FormLabel>
               <Controller

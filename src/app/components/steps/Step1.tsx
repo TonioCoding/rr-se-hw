@@ -52,11 +52,7 @@ export default function Step1({ onNext }: { onNext: OnNext }) {
         />
       </div>
       <div className="flex flex-col items-center gap-[1rem] place-self-center mt-[2rem] text-center my-[1rem] max-w-[400px]">
-        <p>
-          Choose the account type that best suits your needs. You can select
-          Personal for managing individual finances, or Business for handling
-          company-related transactions and expenses.
-        </p>
+        <p>Choose the account type that best suits your needs&#46;</p>
         <Button
           type="button"
           onClick={handleSubmit}

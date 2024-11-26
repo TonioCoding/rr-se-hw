@@ -118,7 +118,7 @@ export default function ContactInformationForm(props: Props) {
     <Form {...form}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 gap-[2rem] w-[400px] place-self-center"
+        className="grid grid-cols-1 gap-[1.5rem] w-full md:w-[400px] place-self-center"
       >
         <FormField
           name="emailAddress"

@@ -12,15 +12,12 @@ export default function Step2({
   onBack: OnBack;
 }) {
   return (
-    <div>
-      <h1></h1>
+    <div className="grid grid-cols-1 gap-[2rem]">
+      <h1 className="text-lg text-center">Personal Information</h1>
       <PersonalInformationForm onNext={onNext} />
       <Button onClick={onBack} className="w-[100px] bg-blue-500">
         Back
       </Button>
-      {/* <Button onClick={onNext} className="w-[100px] bg-blue-500">
-        Next
-      </Button> */}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { OnBack, OnNext } from "@/app/steps/[step]/page";
 import { Button } from "@/app/ui/Button";
+import ContactInformationForm from "../ContactInformationForm";
 
 export default function Step3({
   onNext,
@@ -9,13 +10,11 @@ export default function Step3({
   onBack: OnBack;
 }) {
   return (
-    <div>
-      hey
+    <div className="grid grid-cols-1 gap-[2rem]">
+      <h1 className="text-lg text-center">Contact Information</h1>
+      <ContactInformationForm onNext={onNext} />
       <Button onClick={onBack} className="w-[100px] bg-blue-500">
         Back
-      </Button>
-      <Button onClick={onNext} className="w-[100px] bg-blue-500">
-        Next
       </Button>
     </div>
   );

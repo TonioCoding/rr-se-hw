@@ -13,7 +13,7 @@ export interface ContactInformation {
   emailAddress: string;
   phoneNumber: string;
   streetAddress: string;
-  unit: string;
+  typeOfBuilding: string;
   city: string;
   state: string;
   postalCode: string;
@@ -49,7 +49,7 @@ const useFormStore = create<StateObj>()(
         emailAddress: "",
         phoneNumber: "",
         streetAddress: "",
-        unit: "",
+        typeOfBuilding: "",
         city: "",
         state: "",
         postalCode: "",

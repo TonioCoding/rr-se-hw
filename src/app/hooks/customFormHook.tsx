@@ -14,13 +14,11 @@ export const personalInformationFormSchema = z.object({
   middleName: z.string().min(2, {
     message: "Middle name must be at least 2 characters",
   }),
-  dateOfBirth: z.coerce
-    .string()
-    .min(1, { message: "Please Select DOB" })
-    /* .refine((date) => {
+  dateOfBirth: z.coerce.string().min(1, { message: "Please Select DOB" }),
+  /* .refine((date) => {
       //here use regex to make sure date is of desired format
       //i.e. yyyy-mm-dd
-    }) */,
+    }) */
   /*  avatar: z
     .instanceof(File)
     .refine((file) => file.size <= 5 * 1024 * 1024, {
@@ -32,26 +30,26 @@ export const personalInformationFormSchema = z.object({
 });
 
 export const contactInformationFormSchema = z.object({
-  emailAddress: z.string().min(8, {
-    message: "Username must be at least 8 characters.",
+  emailAddress: z.string().email().min(8, {
+    message: "Email address must be at least 8 characters.",
   }),
-  phoneNumber: z.number().min(10, {
+  phoneNumber: z.string().min(10, {
     message: "Phone number must be at least 10 characters.",
   }),
   streetAddress: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Street address must be at least 2 characters.",
   }),
-  unit: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  typeOfBuilding: z.string().min(2, {
+    message: "Building type must be at least 2 characters.",
   }),
   city: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "City must be at least 2 characters.",
   }),
   state: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "State must be at least 2 characters.",
   }),
-  postalCode: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  postalCode: z.string().min(5, {
+    message: "Postal must be at least 5 digits.",
   }),
 });
 
@@ -104,9 +102,9 @@ export function useContactInformationForm() {
     resolver: zodResolver(contactInformationFormSchema),
     defaultValues: {
       emailAddress: "",
-      phoneNumber: 0,
+      phoneNumber: "",
       streetAddress: "",
-      unit: "",
+      typeOfBuilding: "",
       city: "",
       state: "",
       postalCode: "",
@@ -121,9 +119,9 @@ export function useContactInformationForm() {
     resolver: zodResolver(contactInformationFormSchema),
     defaultValues: {
       emailAddress: "",
-      phoneNumber: 0,
+      phoneNumber: "",
       streetAddress: "",
-      unit: "",
+      typeOfBuilding: "",
       city: "",
       state: "",
       postalCode: "",

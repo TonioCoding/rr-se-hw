@@ -34,7 +34,6 @@ export default function PersonalInformationForm(props: Props) {
     usePersonalInformationForm();
   const form = usePersonalInformationForm();
   const setFormData = useFormStore((state) => state.setPersonalInformation);
-  const getState = useFormStore((state) => state.getState);
 
   type FormSchemaType = z.infer<typeof personalInformationFormSchema>;
 

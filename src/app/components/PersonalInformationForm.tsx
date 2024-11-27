@@ -104,6 +104,8 @@ export default function PersonalInformationForm(props: Props) {
                 name="dateOfBirth"
                 render={() => (
                   <ReactDatePicker
+                    maxDate={new Date("2024/12/31")}
+                    minDate={new Date("1900/01/01")}
                     selected={selectedDate ? new Date(selectedDate) : null}
                     onChange={(date) => {
                       const newDate = moment(date).format("l");

@@ -27,3 +27,11 @@ A lightweight application built with **Next.js** to simulate a "Know Your Custom
    npm run dev
 
 3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
+## Notes
+1. **Invisible year selection arrows** 
+
+![Screenshot_27-11-2024_6914_rr-se-hw-ho1f vercel app](https://github.com/user-attachments/assets/990066d3-8e65-412d-9781-3d947f0f8975)
+
+The arrows to control what years the user currently wants to select, using react-date-picker, are currently hidden from dependency error but fullly functional, fix coming soon.

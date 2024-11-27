@@ -19,7 +19,7 @@ A lightweight application built with **Next.js** to simulate a "Know Your Custom
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/rr-se-hw.git
+   git clone https://github.com/TonioCoding/rr-se-hw.git
    cd rr-se-hw
 
 2. **Run development server**:

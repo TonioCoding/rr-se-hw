@@ -6,7 +6,7 @@ export default function PersonalInformationSummary() {
   const getFormData = useFormStore((state) => state.getState);
 
   return (
-    <div className="summary">
+    <div className="summary md:border-r border-gray-300 text-center">
       <h1 className="">Personal Information</h1>
       <div className="summary-container">
         <h2 className="">First Name</h2>

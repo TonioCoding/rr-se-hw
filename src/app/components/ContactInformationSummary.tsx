@@ -6,7 +6,7 @@ export default function ContactInformationSummary() {
   const getFormData = useFormStore((state) => state.getState);
 
   return (
-    <div className="summary">
+    <div className="summary text-center">
       <h1 className="">Contact Information</h1>
       <div className="summary-container">
         <h2 className="">Email Address</h2>

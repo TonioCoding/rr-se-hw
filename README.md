@@ -4,13 +4,12 @@ A lightweight application built with **Next.js** to simulate a "Know Your Custom
 
 ## Features
 
-- Responsive and modern UI for capturing customer details.
 - Form validation using **Zod** for a robust and secure data entry process.
 - State management with **Zustand**.
-- Beautiful and consistent styling with **shadcn**.
+- UI componenets with **shadcn**.
 - Smooth animations powered by **Framer Motion**.
 - User-friendly date selection using **React Date Picker**.
-- Toast notifications for form actions via **React Toastify**.
+- Toast notifications for notifications via **React Toastify**.
 - Efficient form handling and submission powered by **React Hook Form**.
 - Time formatting and manipulation using **Moment.js**.
 
@@ -23,21 +22,8 @@ A lightweight application built with **Next.js** to simulate a "Know Your Custom
    git clone https://github.com/your-username/rr-se-hw.git
    cd rr-se-hw
 
+2. **Run development server**:
+   ```bash
+   npm run dev
 
-
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

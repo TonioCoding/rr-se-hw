@@ -6,7 +6,7 @@ A lightweight application built with **Next.js** to simulate a "Know Your Custom
 
 - Form validation using **Zod** for a robust and secure data entry process.
 - State management with **Zustand**.
-- UI componenets with **shadcn**.
+- UI components with **shadcn**.
 - Smooth animations powered by **Framer Motion**.
 - User-friendly date selection using **React Date Picker**.
 - Toast notifications for notifications via **React Toastify**.

@@ -63,7 +63,7 @@ export default function KYC() {
   };
 
   return (
-    <section>
+    <section className="grid grid-cols-1">
       <div className="text-center place-items-center my-[1rem] mb-[3rem]">
         <h1 className="py-[1rem] text-xl">
           <span className="text-blue-500">{pathnameToString(step)}</span>
@@ -73,7 +73,10 @@ export default function KYC() {
       {StepComponent && (
         <StepComponent onNext={handleNext} onBack={handleBack} />
       )}
-      <Button className="bg-red-500 w-[100px] mt-[1rem]" onClick={cancelForm}>
+      <Button
+        className="bg-red-500 w-[100px] self-start mt-[1rem] place-self-center"
+        onClick={cancelForm}
+      >
         Cancel
       </Button>
     </section>

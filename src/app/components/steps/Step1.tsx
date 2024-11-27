@@ -59,7 +59,7 @@ export default function Step1({ onNext }: { onNext: OnNext }) {
         <Button
           type="button"
           onClick={handleSubmit}
-          className="self-start md:self-center mt-[1rem] w-[100px] bg-blue-500 rounded-xl"
+          className="self-center mt-[1rem] w-[100px] bg-blue-500 rounded-xl"
         >
           Next
         </Button>

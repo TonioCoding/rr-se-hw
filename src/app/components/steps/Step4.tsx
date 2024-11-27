@@ -30,8 +30,11 @@ export default function Step4({ onBack }: { onBack: OnBack }) {
         <PersonalInformationSummary />
         <ContactInformationSummary />
       </div>
-      <div className="flex justify-between md:justify-center gap-4 mt-[1rem]">
-        <Button onClick={onBack} className="w-[100px] bg-blue-500">
+      <div className="flex justify-between md:justify-center gap-4 my-[1rem]">
+        <Button
+          onClick={onBack}
+          className="w-[100px] bg-blue-500 place-self-center"
+        >
           Back
         </Button>
         <Button onClick={submitForm} className="w-[100px] bg-green-500">

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+// Shape for personal information within state object
 export interface PersonalInformation {
   firstName: string;
   lastName: string;
@@ -9,6 +10,7 @@ export interface PersonalInformation {
   avatar?: File;
 }
 
+// Shape for contact information within state object
 export interface ContactInformation {
   emailAddress: string;
   phoneNumber: string;
@@ -19,8 +21,10 @@ export interface ContactInformation {
   postalCode: string;
 }
 
+// Type for account type within state object
 export type AccountType = "Personal" | "Business" | string;
 
+// Shape for entire state object
 export interface StateObj {
   accountType: AccountType;
   personalInformation: PersonalInformation;
@@ -35,12 +39,15 @@ export interface StateObj {
   setPersonalInformation: (info: PersonalInformation) => void;
   setContactInformation: (info: ContactInformation) => void;
 }
+
+// Shape used for resetting state
 interface InitialState {
   accountType: AccountType;
   personalInformation: PersonalInformation;
   contactInformation: ContactInformation;
 }
 
+// Object used for reseting state
 const initialState: InitialState = {
   accountType: "",
   personalInformation: {
@@ -60,6 +67,7 @@ const initialState: InitialState = {
   },
 };
 
+// Declaring global state store for application
 const useFormStore = create<StateObj>()(
   persist(
     (set, get) => ({
@@ -98,4 +106,6 @@ const useFormStore = create<StateObj>()(
     { name: "data-storage" }
   )
 );
+
+// export zustand global state
 export default useFormStore;

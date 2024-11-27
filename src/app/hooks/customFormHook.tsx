@@ -5,6 +5,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import useFormStore from "../zustand";
 
+// Created zod object schema to integrate with custom form hook
+// This schema is used to validate the state of a custom form hook
 export const personalInformationFormSchema = z.object({
   firstName: z.string().min(2, {
     message: "First name must be at least 2 characters",
@@ -16,20 +18,10 @@ export const personalInformationFormSchema = z.object({
     message: "Middle name must be at least 2 characters",
   }),
   dateOfBirth: z.coerce.string().min(1, { message: "Please Select DOB" }),
-  /* .refine((date) => {
-      //here use regex to make sure date is of desired format
-      //i.e. yyyy-mm-dd
-    }) */
-  /*  avatar: z
-    .instanceof(File)
-    .refine((file) => file.size <= 5 * 1024 * 1024, {
-      message: "File size must not exceed 5MB",
-    })
-    .refine((file) => ["image/jpeg", "image/png"].includes(file.type), {
-      message: "Only JPEG or PNG files are allowed",
-    }), */
 });
 
+// Created zod object schema to integrate with custom form hook
+// This schema is used to validate the state of a custom form hook
 export const contactInformationFormSchema = z.object({
   emailAddress: z.string().email().min(8, {
     message: "Email address must be at least 8 characters.",
@@ -54,9 +46,13 @@ export const contactInformationFormSchema = z.object({
   }),
 });
 
+// Created custom form hook
 export function usePersonalInformationForm() {
+  // Getting reference to Zustand global state method to retrieve state
   const getState = useFormStore((state) => state.getState);
 
+  // Custom form declaration #1, spread form properties to parent form component
+  // i.e. <Form {...form}>...</Form>
   const form = useForm<z.infer<typeof personalInformationFormSchema>>({
     resolver: zodResolver(personalInformationFormSchema),
     defaultValues: {
@@ -67,6 +63,8 @@ export function usePersonalInformationForm() {
     },
   });
 
+  // Custom form declaration #2, destructured variables from custom hook to use in form fields
+  // i.e. <FormField control={control}>...</FormField>
   const {
     control,
     register,
@@ -84,8 +82,10 @@ export function usePersonalInformationForm() {
 
   type FormSchemaType = z.infer<typeof personalInformationFormSchema>;
 
-  // onSubmit is opt: form goal is to update zustand state, which can't be done outside a react component
+  // Function to execute when form is submitted
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
+    // Do something with data(form state)...
+
     console.log(data);
     console.log("form data has been submitted");
   };
@@ -100,9 +100,15 @@ export function usePersonalInformationForm() {
   };
 }
 
+// Created custom form hook
+
 export function useContactInformationForm() {
+  // Getting reference to Zustand global state method to retrieve state
+
   const getState = useFormStore((state) => state.getState);
 
+  // Custom form declaration #1, spread form properties to parent form component
+  // i.e. <Form {...form}>...</Form>
   const form = useForm<z.infer<typeof contactInformationFormSchema>>({
     resolver: zodResolver(contactInformationFormSchema),
     defaultValues: {
@@ -116,6 +122,8 @@ export function useContactInformationForm() {
     },
   });
 
+  // Custom form declaration #2, destructured variables from custom hook to use in form fields
+  // i.e. <FormField control={control}>...</FormField>
   const {
     register,
     handleSubmit,
@@ -135,7 +143,10 @@ export function useContactInformationForm() {
 
   type FormSchemaType = z.infer<typeof contactInformationFormSchema>;
 
+  // Function to execute when form is submitted
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => {
+    // Do something with data(form state)...
+
     console.log(data);
   };
 

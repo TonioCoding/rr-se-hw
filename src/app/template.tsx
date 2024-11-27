@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// Template used to wrap root of app and apply transitions
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <motion.div

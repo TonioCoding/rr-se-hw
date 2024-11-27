@@ -2,10 +2,8 @@
 
 import { Button } from "../ui/Button";
 import {
-  //FormMessage,
   Form,
   FormControl,
-  //FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,7 +17,7 @@ import {
 import useFormStore from "../zustand";
 import { Controller, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -29,7 +27,10 @@ interface Props {
   onNext: () => void;
 }
 
+type SelectedDate = null | string;
+
 export default function PersonalInformationForm(props: Props) {
+  const [selectedDate, setSelectedDate] = useState<SelectedDate>(null);
   const { control, register, handleSubmit, errors } =
     usePersonalInformationForm();
   const form = usePersonalInformationForm();
@@ -92,11 +93,10 @@ export default function PersonalInformationForm(props: Props) {
             </FormItem>
           )}
         />
-
         <FormField
           name="dateOfBirth"
           control={control}
-          render={({ field: { /* value, */ onChange } }) => (
+          render={({ field: { onChange } }) => (
             <FormItem className="flex gap-5 items-center">
               <FormLabel>Date of birth</FormLabel>
               <Controller
@@ -104,12 +104,14 @@ export default function PersonalInformationForm(props: Props) {
                 name="dateOfBirth"
                 render={() => (
                   <ReactDatePicker
-                    //selected={new Date(value)}
+                    selected={selectedDate ? new Date(selectedDate) : null}
                     onChange={(date) => {
-                      onChange(moment(date).format("l"));
+                      const newDate = moment(date).format("l");
+                      onChange(newDate);
+                      setSelectedDate(newDate);
                     }}
                     showYearDropdown
-                    dateFormat="yyyy-MM-dd"
+                    dateFormat="MM-dd-yyyy"
                     placeholderText="Select date"
                     className="input"
                   />
